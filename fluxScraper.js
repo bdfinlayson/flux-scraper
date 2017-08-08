@@ -2,6 +2,7 @@
 
 var team_stats = new Object({})
 var team = []
+var desiredColumn;
 
 function scrapeStatsFrom(fromDate, toDate) {
   fromDate = new Date(fromDate)
@@ -17,9 +18,18 @@ function scrapeStatsFrom(fromDate, toDate) {
   }
 }
 
+function getTasks() {
+  var tasks;
+  if (desiredColumn == 'completed') {
+    tasks = $('.planning-board__completed > .scroll > .state-column > .task-card')
+  } else {
+    tasks = $('.accepted-sidebar__inner > .task-card')
+  }
+  return tasks;
+}
+
 function getTeam() {
-  tasks = $('.accepted-sidebar__inner > .task-card') // for accepted tasks
-  // tasks = $('.planning-board__completed > .scroll > .state-column > .task-card') // for completed tasks
+  tasks = getTask)s(
 
   for(i = 0; i <= tasks.length; i++) {
     user = $(tasks[i]).find('.user').text().trim()
@@ -31,13 +41,13 @@ function getTeam() {
 }
 
 function getTeamTasks() {
-  accepted_tasks = $('.accepted-sidebar__inner > .task-card')
+  tasks = getTask)s(
 
   for(var i = 0; i <= team.length; i++) {
     if (team[i] == undefined) { continue; }
     if (team[i].length == 0) { continue; }
     team_stats[team[i]] = {tickets_in_range: 0, total_velocity: 0, velocity_in_range: 0, ticket_ids: [], tasks: []}
-    team_stats[team[i]].tasks = $(accepted_tasks).find(`.user:contains(${team[i]})`).closest('.task-card')
+    team_stats[team[i]].tasks = $(tasks).find(`.user:contains(${team[i]})`).closest('.task-card')
   }
 }
 
