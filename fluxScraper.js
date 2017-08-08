@@ -29,7 +29,7 @@ function getTasks() {
 }
 
 function getTeam() {
-  tasks = getTask)s(
+  tasks = getTasks()
 
   for(i = 0; i <= tasks.length; i++) {
     user = $(tasks[i]).find('.user').text().trim()
@@ -41,7 +41,7 @@ function getTeam() {
 }
 
 function getTeamTasks() {
-  tasks = getTask)s(
+  tasks = getTasks()
 
   for(var i = 0; i <= team.length; i++) {
     if (team[i] == undefined) { continue; }
