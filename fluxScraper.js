@@ -18,10 +18,11 @@ function scrapeStatsFrom(fromDate, toDate) {
 }
 
 function getTeam() {
-  accepted_tasks = $('.accepted-sidebar__inner > .task-card')
+  tasks = $('.accepted-sidebar__inner > .task-card') // for accepted tasks
+  // tasks = $('.planning-board__completed > .scroll > .state-column > .task-card') // for completed tasks
 
-  for(i = 0; i <= accepted_tasks.length; i++) {
-    user = $(accepted_tasks[i]).find('.user').text().trim()
+  for(i = 0; i <= tasks.length; i++) {
+    user = $(tasks[i]).find('.user').text().trim()
     if(user.length == 0) { continue; }
     team.push(user)
   }
